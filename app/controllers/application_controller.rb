@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   rescue_from StandardError, with: :dispatch_error unless Rails.env.development?
 
   def dispatch_error(exception)
@@ -32,4 +33,10 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new(params[:path])
   end
 
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:slug, :name, :email, :password, :password_confirmation) }
+  end
+  
 end

@@ -39,6 +39,7 @@ gem 'will_paginate-bootstrap'
 gem 'slim'
 
 group :development do
+  gem 'letter_opener'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
