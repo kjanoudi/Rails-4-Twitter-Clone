@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
  
   validates :name, presence: true, length: { maximum: 50 }
-  validates :slug, uniqueness: true
+  validates :slug, presence: true, uniqueness: true
 
   def to_param
     slug
