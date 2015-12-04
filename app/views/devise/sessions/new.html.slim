@@ -1,0 +1,25 @@
+- provide(:title, "Sign in")
+
+.row
+  div.col-md-12.one-col
+    h1 Sign in to Twitter Clone
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-group
+        = f.label :email, class: 'control-label'
+        = f.text_field :email, class: 'form-control'
+
+      .form-group
+        = f.label :password, class: 'control-label'
+        = f.password_field :password, class: 'form-control'
+
+      - if devise_mapping.rememberable?
+      	.form_group
+  			= f.check_box :remember_me
+			| &nbsp;
+			= f.label :remember_me
+  		
+      = f.submit "Sign in", class: "btn btn-large btn-primary"
+
+    p
+     = render "devise/shared/links"
