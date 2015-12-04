@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      authenticate_user! unless current_user?(@user)
+      authenticate_user! unless current_user == @user
     end
 
 end

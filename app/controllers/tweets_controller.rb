@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :authenticate_user!, only: [:create, :destroy]
   before_action :correct_user, only: [:destroy]
 
   # TODO: show all tweets despite non-signed in user.
